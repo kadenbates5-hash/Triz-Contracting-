@@ -1,0 +1,15 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+
+# server
+server/data.sqlite3
+server/data.sqlite3-*
+server/uploads/*
+!server/uploads/.gitkeep
+server/.env
+
+# client
+client/.env
