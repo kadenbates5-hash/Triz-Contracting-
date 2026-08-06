@@ -7,10 +7,10 @@ import StarRating from "../components/StarRating";
 import { company, services, placeholderGallery } from "../data/content";
 
 const stats = [
-  { value: `${company.yearsInBusiness}+`, label: "Years in business" },
   { value: "250+", label: "Projects completed" },
   { value: "100%", label: "Licensed & insured" },
   { value: "5.0", label: "Avg. client rating" },
+  { value: "Free", label: "Estimates" },
 ];
 
 const testimonialTeaser = [
@@ -38,11 +38,14 @@ export default function Home() {
           initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
           animate={{ opacity: 1, scale: 1, rotate: -6 }}
           transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute right-6 top-28 z-10 hidden h-24 w-24 flex-col items-center justify-center rounded-2xl border-2 border-accent bg-charcoal/80 text-center shadow-xl backdrop-blur sm:flex sm:right-10 sm:top-32"
+          className="absolute right-6 top-28 z-10 hidden h-24 w-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-accent bg-charcoal/80 text-center shadow-xl backdrop-blur sm:flex sm:right-10 sm:top-32"
         >
-          <span className="font-display text-2xl font-800 leading-none text-accent">{company.yearsInBusiness}+</span>
-          <span className="mt-1 text-[9px] font-bold uppercase leading-tight tracking-wider text-white/80">
-            Years<br />Building WI
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 2 4 5v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V5l-8-3Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
+          </svg>
+          <span className="text-[9px] font-bold uppercase leading-tight tracking-wider text-white/80">
+            Licensed<br />&amp; Insured
           </span>
         </motion.div>
 

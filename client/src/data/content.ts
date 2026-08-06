@@ -14,8 +14,6 @@ export const company = {
   address: "Franklin, WI 53132", // [PLACEHOLDER ADDRESS]
   coords: { lat: 42.8892, lng: -88.0342 }, // Franklin, WI approx.
   hours: "Mon–Sat, 7:00am – 6:00pm",
-  founded: 2011, // [PLACEHOLDER]
-  yearsInBusiness: new Date().getFullYear() - 2011,
 };
 
 export type Service = {

@@ -32,11 +32,11 @@ export default function About() {
           <Reveal delay={0.1}>
             <span className="text-xs font-bold uppercase tracking-widest text-accent">Our Story</span>
             <h2 className="mt-3 font-display text-3xl font-800 tracking-tight text-ink">
-              {company.yearsInBusiness}+ years of getting it right.
+              Quality work, done right.
             </h2>
             <div className="mt-5 space-y-4 text-ink-soft">
               <p>
-                {company.owner} founded Triz Contracting in {company.founded} out of {company.city}, Wisconsin
+                {company.owner} founded Triz Contracting out of {company.city}, Wisconsin
                 with a simple idea: homeowners shouldn't have to hire five different contractors
                 for one project. [PLACEHOLDER — replace with Andrew's real background/story.]
               </p>
