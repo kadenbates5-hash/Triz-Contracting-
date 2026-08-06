@@ -28,56 +28,57 @@ export default function Home() {
           <img
             src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1800&auto=format&fit=crop"
             alt=""
-            className="h-full w-full object-cover opacity-40"
+            className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
           <div className="bg-noise absolute inset-0" />
         </div>
 
-        <div className="relative mx-auto max-w-7xl px-5 py-32 sm:px-8">
-          <motion.p
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent-light backdrop-blur"
-          >
-            Franklin, WI · Full-Service Contracting
-          </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-3xl font-display text-5xl font-800 leading-[1.05] tracking-tight sm:text-6xl md:text-7xl"
-          >
-            {company.tagline}
-          </motion.h1>
-          <motion.p
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.35, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-xl text-lg text-white/70"
-          >
-            From full remodels to roofing, additions, and everything between —
-            {" "}{company.owner.split(" ")[0]} and the Triz Contracting crew handle it, done right, the first time.
-          </motion.p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
+          animate={{ opacity: 1, scale: 1, rotate: -6 }}
+          transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute right-6 top-28 z-10 hidden h-24 w-24 flex-col items-center justify-center rounded-2xl border-2 border-accent bg-charcoal/80 text-center shadow-xl backdrop-blur sm:flex sm:right-10 sm:top-32"
+        >
+          <span className="font-display text-2xl font-800 leading-none text-accent">{company.yearsInBusiness}+</span>
+          <span className="mt-1 text-[9px] font-bold uppercase leading-tight tracking-wider text-white/80">
+            Years<br />Building WI
+          </span>
+        </motion.div>
+
+        <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className="mt-9 flex flex-wrap items-center gap-4"
+            transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-2xl rounded-3xl border border-white/10 bg-charcoal/50 p-8 shadow-2xl backdrop-blur-xl sm:p-12"
           >
-            <Link
-              to="/contact"
-              className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
-            >
-              Get a Free Quote
-            </Link>
-            <Link
-              to="/gallery"
-              className="rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
-            >
-              See Our Work
-            </Link>
+            <p className="mb-3 font-display text-base italic text-white/60 sm:text-lg">
+              Franklin, Wisconsin's full-service contractor for
+            </p>
+            <h1 className="font-display text-4xl font-800 leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+              Built right,
+              <br />
+              <span className="text-accent">the first time.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-lg text-white/70">
+              From full remodels to roofing, additions, and everything between —
+              {" "}{company.owner.split(" ")[0]} and the Triz Contracting crew handle it, start to finish.
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <Link
+                to="/contact"
+                className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
+              >
+                Get a Free Quote
+              </Link>
+              <Link
+                to="/gallery"
+                className="rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+              >
+                See Our Work
+              </Link>
+            </div>
           </motion.div>
         </div>
 
@@ -155,6 +156,32 @@ export default function Home() {
             View All Services
           </Link>
         </Reveal>
+      </section>
+
+      {/* Full-bleed pull-quote */}
+      <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-charcoal text-white">
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1800&auto=format&fit=crop"
+            alt=""
+            className="h-full w-full object-cover opacity-45"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
+        </div>
+        <div className="relative mx-auto max-w-4xl px-6 py-24 text-center sm:px-8">
+          <Reveal>
+            <p className="font-display text-3xl font-800 leading-tight tracking-tight sm:text-4xl md:text-5xl">
+              We'd rather do one job right for a family that calls us back
+              {" "}<span className="text-accent">than five jobs fast</span> for one that never does.
+            </p>
+            <Link
+              to="/gallery"
+              className="mt-10 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-transform hover:scale-105"
+            >
+              Our Work
+            </Link>
+          </Reveal>
+        </div>
       </section>
 
       {/* Gallery teaser */}

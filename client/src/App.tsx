@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Header from "./components/Header";
+import AnnouncementBar from "./components/AnnouncementBar";
 import Footer from "./components/Footer";
 import StickyCallButton from "./components/StickyCallButton";
 import Home from "./pages/Home";
@@ -16,6 +17,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-paper">
+      <AnnouncementBar />
       <Header />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
