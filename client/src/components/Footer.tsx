@@ -1,19 +1,13 @@
 import { Link } from "react-router-dom";
 import { company } from "../data/content";
+import logoMark from "../assets/logo-mark.png";
 
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-white/70">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 md:grid-cols-4">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent font-display text-lg font-800 text-white">
-              T
-            </span>
-            <span className="font-display text-lg font-700 text-white">
-              Triz<span className="text-accent-light">Contracting</span>
-            </span>
-          </div>
+          <img src={logoMark} alt="Triz Contracting LLC" className="h-16 w-16 object-contain" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed">
             Full-service contracting based in {company.city}, {company.state}. Owned and
             operated by {company.owner} — quality work, done right the first time.

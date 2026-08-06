@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { company } from "../data/content";
+import logoMark from "../assets/logo-mark.png";
 
 const links = [
   { to: "/", label: "Home" },
@@ -30,13 +31,12 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 sm:px-8">
-        <Link to="/" className="group flex items-center gap-2" onClick={() => setMenuOpen(false)}>
-          <span className="flex h-9 w-9 items-center justify-center rounded-md bg-accent font-display text-lg font-800 text-white transition-transform group-hover:-rotate-6">
-            T
-          </span>
-          <span className="font-display text-lg font-700 tracking-tight text-white">
-            Triz<span className="text-accent-light">Contracting</span>
-          </span>
+        <Link to="/" className="group flex items-center" onClick={() => setMenuOpen(false)}>
+          <img
+            src={logoMark}
+            alt="Triz Contracting LLC"
+            className="h-14 w-14 object-contain transition-transform group-hover:-rotate-6 sm:h-16 sm:w-16"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 lg:flex">

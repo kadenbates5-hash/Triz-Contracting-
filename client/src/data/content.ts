@@ -8,8 +8,8 @@ export const company = {
   city: "Franklin",
   state: "WI",
   serviceArea: "Franklin, Milwaukee, Oak Creek, Hales Corners & the greater Milwaukee area",
-  phoneDisplay: "(414) 555-0142", // [PLACEHOLDER PHONE]
-  phoneHref: "tel:+14145550142",
+  phoneDisplay: "414-617-3337",
+  phoneHref: "tel:+14146173337",
   email: "info@trizcontracting.com", // [PLACEHOLDER EMAIL]
   address: "Franklin, WI 53132", // [PLACEHOLDER ADDRESS]
   coords: { lat: 42.8892, lng: -88.0342 }, // Franklin, WI approx.
