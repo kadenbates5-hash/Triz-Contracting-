@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import PageShell from "../components/PageShell";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import { galleryCategories, placeholderGallery, type GalleryItem as LocalItem } from "../data/content";
@@ -41,18 +42,12 @@ export default function Gallery() {
 
   return (
     <PageShell>
-      <section className="bg-charcoal py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-light">Gallery</span>
-          <h1 className="mt-3 font-display text-4xl font-800 tracking-tight sm:text-5xl">
-            See the transformation.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-white/70">
-            Drag any slider to compare before and after. Every project below was completed
-            by the Triz Contracting crew.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Gallery"
+        title="See the transformation."
+        subtitle="Drag any slider to compare before and after. Every project below was completed by the Triz Contracting crew."
+        image="https://images.unsplash.com/photo-1632759145351-1d592919f522?q=80&w=1800&auto=format&fit=crop"
+      />
 
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <Reveal className="mb-10 flex flex-wrap justify-center gap-2">

@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import PageShell from "../components/PageShell";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
-import { company } from "../data/content";
+import { company, services } from "../data/content";
 
 const values = [
   { title: "Straight answers", text: "No upsells, no runaround. If we can't do something well, we'll tell you." },
@@ -13,14 +14,11 @@ const values = [
 export default function About() {
   return (
     <PageShell>
-      <section className="bg-charcoal py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-light">About Us</span>
-          <h1 className="mt-3 font-display text-4xl font-800 tracking-tight sm:text-5xl">
-            Built by {company.owner}.
-          </h1>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="About Us"
+        title={`Built by ${company.owner}.`}
+        image="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1800&auto=format&fit=crop"
+      />
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
@@ -82,6 +80,20 @@ export default function About() {
             ))}
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pt-20 sm:px-8">
+        <Reveal className="grid grid-cols-3 gap-3 sm:gap-4">
+          {services.slice(0, 3).map((s) => (
+            <img
+              key={s.slug}
+              src={s.image}
+              alt={s.name}
+              className="aspect-square w-full rounded-2xl object-cover"
+              loading="lazy"
+            />
+          ))}
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8">

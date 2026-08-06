@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import PageShell from "../components/PageShell";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import { services } from "../data/content";
 
@@ -10,18 +11,12 @@ export default function Services() {
 
   return (
     <PageShell>
-      <section className="bg-charcoal py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-light">Services</span>
-          <h1 className="mt-3 font-display text-4xl font-800 tracking-tight sm:text-5xl">
-            Full-scope contracting, one crew.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-white/70">
-            Tap a service to see what's included. Don't see your project listed? We probably
-            still do it — reach out and ask.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Services"
+        title="Full-scope contracting, one crew."
+        subtitle="Tap a service to see what's included. Don't see your project listed? We probably still do it — reach out and ask."
+        image="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1800&auto=format&fit=crop"
+      />
 
       <section className="mx-auto max-w-5xl px-5 py-16 sm:px-8">
         <div className="flex flex-col divide-y divide-paper-line border-y border-paper-line">
@@ -34,7 +29,13 @@ export default function Services() {
                     onClick={() => setOpenSlug(open ? null : s.slug)}
                     className="flex w-full items-center justify-between gap-4 py-6 text-left"
                   >
-                    <div className="flex items-baseline gap-4">
+                    <div className="flex items-center gap-4">
+                      <img
+                        src={s.image}
+                        alt=""
+                        className="h-12 w-12 shrink-0 rounded-lg object-cover sm:h-14 sm:w-14"
+                        loading="lazy"
+                      />
                       <span className="font-display text-sm font-700 text-accent">
                         {String(i + 1).padStart(2, "0")}
                       </span>

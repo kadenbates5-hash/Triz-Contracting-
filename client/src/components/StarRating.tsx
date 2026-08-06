@@ -24,8 +24,8 @@ export default function StarRating({
             width={size}
             height={size}
             viewBox="0 0 24 24"
-            fill={n <= rating ? "#d81b2c" : "none"}
-            stroke={n <= rating ? "#d81b2c" : "#c9c6bf"}
+            fill={n <= rating ? "#f2590c" : "none"}
+            stroke={n <= rating ? "#f2590c" : "#c9c6bf"}
             strokeWidth="1.5"
           >
             <path

@@ -7,7 +7,7 @@ const pinIcon = L.divIcon({
   className: "",
   html: `<div style="
     width:34px;height:34px;border-radius:50% 50% 50% 0;
-    background:#d81b2c;transform:rotate(-45deg);
+    background:#f2590c;transform:rotate(-45deg);
     box-shadow:0 4px 10px rgba(0,0,0,0.35);
     display:flex;align-items:center;justify-content:center;
   "><div style="transform:rotate(45deg);width:12px;height:12px;background:white;border-radius:50%;"></div></div>`,
@@ -29,7 +29,7 @@ export default function ServiceAreaMap() {
         <Circle
           center={center}
           radius={32000}
-          pathOptions={{ color: "#d81b2c", fillColor: "#d81b2c", fillOpacity: 0.08, weight: 1.5 }}
+          pathOptions={{ color: "#f2590c", fillColor: "#f2590c", fillOpacity: 0.08, weight: 1.5 }}
         />
         <Marker position={center} icon={pinIcon}>
           <Popup>

@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageShell from "../components/PageShell";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import ServiceAreaMap from "../components/ServiceAreaMap";
 import { company, services } from "../data/content";
@@ -55,17 +56,12 @@ export default function Contact() {
 
   return (
     <PageShell>
-      <section className="bg-charcoal py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-light">Contact</span>
-          <h1 className="mt-3 font-display text-4xl font-800 tracking-tight sm:text-5xl">
-            Let's talk about your project.
-          </h1>
-          <p className="mx-auto mt-5 max-w-2xl text-white/70">
-            Fill out the form, call, or email — whatever's easiest. We respond fast.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        eyebrow="Contact"
+        title="Let's talk about your project."
+        subtitle="Fill out the form, call, or email — whatever's easiest. We respond fast."
+        image="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1800&auto=format&fit=crop"
+      />
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="grid gap-10 lg:grid-cols-5">

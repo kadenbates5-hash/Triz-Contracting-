@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
 import PageShell from "../components/PageShell";
+import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import StarRating from "../components/StarRating";
 import { api, type Review } from "../lib/api";
@@ -58,19 +59,17 @@ export default function Reviews() {
 
   return (
     <PageShell>
-      <section className="bg-charcoal py-20 text-white sm:py-28">
-        <div className="mx-auto max-w-4xl px-5 text-center sm:px-8">
-          <span className="text-xs font-bold uppercase tracking-widest text-accent-light">Reviews</span>
-          <h1 className="mt-3 font-display text-4xl font-800 tracking-tight sm:text-5xl">
-            What clients are saying.
-          </h1>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <StarRating rating={Math.round(Number(avg))} size={22} />
-            <span className="text-lg font-semibold">{avg} / 5</span>
-            <span className="text-white/50">· {reviews.length} reviews</span>
-          </div>
+      <PageHero
+        eyebrow="Reviews"
+        title="What clients are saying."
+        image="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?q=80&w=1800&auto=format&fit=crop"
+      >
+        <div className="mt-6 flex items-center justify-center gap-3">
+          <StarRating rating={Math.round(Number(avg))} size={22} />
+          <span className="text-lg font-semibold">{avg} / 5</span>
+          <span className="text-white/50">· {reviews.length} reviews</span>
         </div>
-      </section>
+      </PageHero>
 
       <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
         <div className="mb-10 flex items-center justify-between">
@@ -143,7 +142,12 @@ export default function Reviews() {
               <div className="flex h-full flex-col rounded-2xl border border-paper-line p-6">
                 <StarRating rating={r.rating} />
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">"{r.text}"</p>
-                <p className="mt-4 text-sm font-semibold text-ink">{r.name}</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent-soft font-display text-sm font-700 text-accent">
+                    {r.name.charAt(0)}
+                  </span>
+                  <p className="text-sm font-semibold text-ink">{r.name}</p>
+                </div>
               </div>
             </Reveal>
           ))}
