@@ -4,6 +4,8 @@ import PageShell from "../components/PageShell";
 import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import StarRating from "../components/StarRating";
+import FlipCard from "../components/FlipCard";
+import TiltCard from "../components/TiltCard";
 import { company, services, placeholderGallery } from "../data/content";
 
 const stats = [
@@ -128,25 +130,45 @@ export default function Home() {
         <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {services.slice(0, 8).map((s, i) => (
             <Reveal key={s.slug} delay={(i % 4) * 0.08}>
-              <Link
-                to="/services"
-                className="group relative flex h-56 flex-col justify-end overflow-hidden rounded-2xl p-5 text-white"
-              >
-                <img
-                  src={s.image}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent" />
-                <span className="relative font-display text-lg font-700 leading-tight">{s.name}</span>
-                <span className="relative mt-1 flex items-center gap-1 text-xs font-medium text-accent-light opacity-0 transition-opacity group-hover:opacity-100">
-                  Learn more
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-                  </svg>
-                </span>
-              </Link>
+              <FlipCard
+                className="h-56"
+                front={
+                  <div className="group relative flex h-full flex-col justify-end overflow-hidden rounded-2xl p-5 text-white">
+                    <img
+                      src={s.image}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/90 via-charcoal/30 to-transparent" />
+                    <span className="relative font-display text-lg font-700 leading-tight">{s.name}</span>
+                    <span className="relative mt-1 flex items-center gap-1 text-xs font-medium text-accent-light">
+                      Tap to preview
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </span>
+                  </div>
+                }
+                back={
+                  <div className="flex h-full flex-col justify-between rounded-2xl border border-accent/30 bg-charcoal p-5 text-white">
+                    <div>
+                      <span className="font-display text-lg font-700 leading-tight">{s.name}</span>
+                      <p className="mt-2 text-xs leading-relaxed text-white/70">{s.short}</p>
+                    </div>
+                    <Link
+                      to="/services"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-accent-light"
+                    >
+                      View details
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </Link>
+                  </div>
+                }
+              />
             </Reveal>
           ))}
         </div>
@@ -232,11 +254,11 @@ export default function Home() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {testimonialTeaser.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.1}>
-              <div className="h-full rounded-2xl border border-paper-line bg-paper-soft p-6">
+              <TiltCard className="h-full rounded-2xl border border-paper-line bg-paper-soft p-6">
                 <StarRating rating={t.rating} />
                 <p className="mt-4 text-sm leading-relaxed text-ink-soft">"{t.text}"</p>
                 <p className="mt-4 text-sm font-semibold text-ink">{t.name}</p>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
@@ -253,6 +275,12 @@ export default function Home() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-blueprint py-24 text-white">
+        <img
+          src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1800&auto=format&fit=crop"
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-blueprint via-blueprint/90 to-blueprint/70" />
         <div className="bg-noise absolute inset-0" />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
           <h2 className="font-display text-3xl font-800 tracking-tight sm:text-4xl">

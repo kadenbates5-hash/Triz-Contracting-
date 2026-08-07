@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
 import { company, services } from "../data/content";
 
 const values = [
@@ -71,11 +72,11 @@ export default function About() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
-                <div className="h-full rounded-2xl bg-white p-6 shadow-sm">
+                <TiltCard className="h-full rounded-2xl bg-white p-6 shadow-sm">
                   <span className="font-display text-2xl font-800 text-accent">{String(i + 1).padStart(2, "0")}</span>
                   <h3 className="mt-3 font-display text-lg font-700 text-ink">{v.title}</h3>
                   <p className="mt-2 text-sm text-ink-soft">{v.text}</p>
-                </div>
+                </TiltCard>
               </Reveal>
             ))}
           </div>

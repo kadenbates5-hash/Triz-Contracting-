@@ -68,6 +68,8 @@ if (galleryCount === 0) {
     ["Two-Story Home Addition", "Additions", "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1200&auto=format&fit=crop"],
     ["Backyard Deck & Pergola", "Outdoor Living", "https://images.unsplash.com/photo-1600566752355-35792bedcfea?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1200&auto=format&fit=crop"],
     ["Siding & Exterior Refresh", "Exteriors", "https://images.unsplash.com/photo-1596205250966-6a26f7c2b7cf?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1200&auto=format&fit=crop"],
+    ["Basement Remodel", "Remodeling", "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1200&auto=format&fit=crop"],
+    ["Covered Front Porch Addition", "Additions", "https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?q=80&w=1200&auto=format&fit=crop", "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1200&auto=format&fit=crop"],
   ];
   const insertMany = db.transaction((rows: [string, string, string, string][]) => {
     for (const r of rows) insert.run(...r);

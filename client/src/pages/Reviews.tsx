@@ -4,6 +4,7 @@ import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import StarRating from "../components/StarRating";
+import TiltCard from "../components/TiltCard";
 import { api, type Review } from "../lib/api";
 
 const fallbackReviews: Review[] = [
@@ -139,7 +140,7 @@ export default function Reviews() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((r, i) => (
             <Reveal key={r.id} delay={(i % 6) * 0.05}>
-              <div className="flex h-full flex-col rounded-2xl border border-paper-line p-6">
+              <TiltCard className="flex h-full flex-col rounded-2xl border border-paper-line p-6">
                 <StarRating rating={r.rating} />
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-ink-soft">"{r.text}"</p>
                 <div className="mt-4 flex items-center gap-3">
@@ -148,7 +149,7 @@ export default function Reviews() {
                   </span>
                   <p className="text-sm font-semibold text-ink">{r.name}</p>
                 </div>
-              </div>
+              </TiltCard>
             </Reveal>
           ))}
         </div>
