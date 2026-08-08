@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
 import ServiceAreaMap from "../components/ServiceAreaMap";
 import { company, services } from "../data/content";
 import { api } from "../lib/api";
@@ -68,42 +69,48 @@ export default function Contact() {
           {/* Quick contact options */}
           <Reveal className="lg:col-span-2">
             <div className="space-y-4">
-              <a
-                href={company.phoneHref}
-                className="flex items-center gap-4 rounded-2xl border border-paper-line p-5 transition-colors hover:border-accent"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                  <PhoneIcon />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Call</p>
-                  <p className="font-display text-lg font-700 text-ink">{company.phoneDisplay}</p>
-                </div>
-              </a>
-              <a
-                href={`mailto:${company.email}`}
-                className="flex items-center gap-4 rounded-2xl border border-paper-line p-5 transition-colors hover:border-accent"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                  <MailIcon />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Email</p>
-                  <p className="font-display text-lg font-700 text-ink break-all">{company.email}</p>
-                </div>
-              </a>
-              <a
-                href={`sms:${company.phoneHref.replace("tel:", "")}`}
-                className="flex items-center gap-4 rounded-2xl border border-paper-line p-5 transition-colors hover:border-accent"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
-                  <MessageIcon />
-                </span>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Text Message</p>
-                  <p className="font-display text-lg font-700 text-ink">{company.phoneDisplay}</p>
-                </div>
-              </a>
+              <TiltCard max={6}>
+                <a
+                  href={company.phoneHref}
+                  className="flex items-center gap-4 rounded-2xl border border-paper-line bg-paper p-5 shadow-sm transition-colors hover:border-accent"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <PhoneIcon />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Call</p>
+                    <p className="font-display text-lg font-700 text-ink">{company.phoneDisplay}</p>
+                  </div>
+                </a>
+              </TiltCard>
+              <TiltCard max={6}>
+                <a
+                  href={`mailto:${company.email}`}
+                  className="flex items-center gap-4 rounded-2xl border border-paper-line bg-paper p-5 shadow-sm transition-colors hover:border-accent"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <MailIcon />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Email</p>
+                    <p className="font-display text-lg font-700 text-ink break-all">{company.email}</p>
+                  </div>
+                </a>
+              </TiltCard>
+              <TiltCard max={6}>
+                <a
+                  href={`sms:${company.phoneHref.replace("tel:", "")}`}
+                  className="flex items-center gap-4 rounded-2xl border border-paper-line bg-paper p-5 shadow-sm transition-colors hover:border-accent"
+                >
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-accent-soft text-accent">
+                    <MessageIcon />
+                  </span>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-wide text-ink-faint">Text Message</p>
+                    <p className="font-display text-lg font-700 text-ink">{company.phoneDisplay}</p>
+                  </div>
+                </a>
+              </TiltCard>
 
               <div className="h-64 overflow-hidden rounded-2xl border border-paper-line">
                 <ServiceAreaMap />

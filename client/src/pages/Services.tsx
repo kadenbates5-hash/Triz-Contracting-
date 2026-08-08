@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
+import TiltCard from "../components/TiltCard";
 import { services } from "../data/content";
 
 export default function Services() {
@@ -82,14 +83,17 @@ export default function Services() {
                               Get a Quote for This
                             </Link>
                           </div>
-                          <div className="order-1 overflow-hidden rounded-2xl md:order-2">
+                          <TiltCard
+                            max={8}
+                            className="order-1 overflow-hidden rounded-2xl shadow-lg md:order-2"
+                          >
                             <img
                               src={s.image}
                               alt={s.name}
                               className="h-56 w-full object-cover md:h-64"
                               loading="lazy"
                             />
-                          </div>
+                          </TiltCard>
                         </div>
                       </motion.div>
                     )}

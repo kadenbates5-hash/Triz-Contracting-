@@ -3,6 +3,7 @@ import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
+import FlipCard from "../components/FlipCard";
 import { company, services } from "../data/content";
 
 const values = [
@@ -84,17 +85,43 @@ export default function About() {
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pt-20 sm:px-8">
-        <Reveal className="grid grid-cols-3 gap-3 sm:gap-4">
-          {services.slice(0, 3).map((s) => (
-            <img
-              key={s.slug}
-              src={s.image}
-              alt={s.name}
-              className="aspect-square w-full rounded-2xl object-cover"
-              loading="lazy"
-            />
-          ))}
+        <Reveal className="text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-accent">A taste of the work</span>
+          <p className="mt-2 text-sm text-ink-faint">Tap a photo to flip it.</p>
         </Reveal>
+        <div className="mt-8 grid grid-cols-3 gap-3 sm:gap-4">
+          {services.slice(0, 3).map((s, i) => (
+            <Reveal key={s.slug} delay={i * 0.08}>
+              <FlipCard
+                className="aspect-square"
+                front={
+                  <div className="relative h-full w-full overflow-hidden rounded-2xl">
+                    <img src={s.image} alt={s.name} className="h-full w-full object-cover" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-transparent to-transparent" />
+                    <span className="absolute bottom-3 left-3 right-3 font-display text-sm font-700 text-white sm:text-base">
+                      {s.name}
+                    </span>
+                  </div>
+                }
+                back={
+                  <div className="flex h-full w-full flex-col justify-between rounded-2xl border border-accent/30 bg-charcoal p-4 text-white">
+                    <p className="text-xs leading-relaxed text-white/70 sm:text-sm">{s.short}</p>
+                    <Link
+                      to="/services"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wide text-accent-light"
+                    >
+                      Learn more
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+                      </svg>
+                    </Link>
+                  </div>
+                }
+              />
+            </Reveal>
+          ))}
+        </div>
       </section>
 
       <section className="mx-auto max-w-4xl px-5 py-20 text-center sm:px-8">

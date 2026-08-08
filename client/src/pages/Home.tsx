@@ -37,18 +37,26 @@ export default function Home() {
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -12 }}
-          animate={{ opacity: 1, scale: 1, rotate: -6 }}
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute right-6 top-28 z-10 hidden h-24 w-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-accent bg-charcoal/80 text-center shadow-xl backdrop-blur sm:flex sm:right-10 sm:top-32"
+          className="absolute right-6 top-28 z-10 hidden sm:right-10 sm:top-32 sm:block"
+          style={{ perspective: "600px" }}
         >
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 2 4 5v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V5l-8-3Z" />
-            <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
-          </svg>
-          <span className="text-[9px] font-bold uppercase leading-tight tracking-wider text-white/80">
-            Licensed<br />&amp; Insured
-          </span>
+          <motion.div
+            animate={{ rotateY: [0, 12, 0, -12, 0], rotate: [-6, -3, -6, -9, -6], y: [0, -8, 0] }}
+            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+            className="flex h-24 w-24 flex-col items-center justify-center gap-1 rounded-2xl border-2 border-accent bg-charcoal/80 text-center shadow-xl backdrop-blur"
+            style={{ transformStyle: "preserve-3d" }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-accent">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 2 4 5v6c0 5 3.4 8.9 8 10 4.6-1.1 8-5 8-10V5l-8-3Z" />
+              <path strokeLinecap="round" strokeLinejoin="round" d="m9 12 2 2 4-4" />
+            </svg>
+            <span className="text-[9px] font-bold uppercase leading-tight tracking-wider text-white/80">
+              Licensed<br />&amp; Insured
+            </span>
+          </motion.div>
         </motion.div>
 
         <div className="relative mx-auto max-w-7xl px-5 py-28 sm:px-8">
