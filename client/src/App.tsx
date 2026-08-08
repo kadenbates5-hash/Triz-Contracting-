@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import AnnouncementBar from "./components/AnnouncementBar";
 import Footer from "./components/Footer";
 import StickyCallButton from "./components/StickyCallButton";
+import ScrollProgressBar from "./components/ScrollProgressBar";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
@@ -17,6 +18,7 @@ export default function App() {
 
   return (
     <div className="flex min-h-screen flex-col bg-paper">
+      <ScrollProgressBar />
       <AnnouncementBar />
       <Header />
       <AnimatePresence mode="wait">

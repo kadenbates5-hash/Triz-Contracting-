@@ -4,6 +4,7 @@ import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import FlipCard from "../components/FlipCard";
+import MagneticButton from "../components/MagneticButton";
 import { company, services } from "../data/content";
 
 const values = [
@@ -54,12 +55,13 @@ export default function About() {
                 that holds up.
               </p>
             </div>
-            <Link
+            <MagneticButton
+              as={Link}
               to="/contact"
               className="mt-7 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Start a Conversation
-            </Link>
+            </MagneticButton>
           </Reveal>
         </div>
       </section>

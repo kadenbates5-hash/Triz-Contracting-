@@ -6,6 +6,9 @@ import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import StarRating from "../components/StarRating";
 import FlipCard from "../components/FlipCard";
 import TiltCard from "../components/TiltCard";
+import ParallaxImage from "../components/ParallaxImage";
+import MagneticButton from "../components/MagneticButton";
+import CountUp from "../components/CountUp";
 import { company, services, placeholderGallery } from "../data/content";
 
 const stats = [
@@ -26,15 +29,12 @@ export default function Home() {
     <PageShell>
       {/* Hero */}
       <section className="relative flex min-h-[92vh] items-center overflow-hidden bg-charcoal text-white">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1800&auto=format&fit=crop"
-            alt=""
-            className="h-full w-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
-          <div className="bg-noise absolute inset-0" />
-        </div>
+        <ParallaxImage
+          src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1800&auto=format&fit=crop"
+          range={12}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
+        <div className="bg-noise absolute inset-0" />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -79,18 +79,20 @@ export default function Home() {
               {" "}{company.owner.split(" ")[0]} and the Triz Contracting crew handle it, start to finish.
             </p>
             <div className="mt-9 flex flex-wrap items-center gap-4">
-              <Link
+              <MagneticButton
+                as={Link}
                 to="/contact"
-                className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
+                className="block rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-accent/30 transition-transform hover:scale-105"
               >
                 Get a Free Quote
-              </Link>
-              <Link
+              </MagneticButton>
+              <MagneticButton
+                as={Link}
                 to="/gallery"
-                className="rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                className="block rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
               >
                 See Our Work
-              </Link>
+              </MagneticButton>
             </div>
           </motion.div>
         </div>
@@ -115,7 +117,9 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-5 py-10 sm:px-8 md:grid-cols-4">
           {stats.map((s, i) => (
             <Reveal key={s.label} delay={i * 0.08} className="text-center">
-              <div className="font-display text-3xl font-800 text-accent sm:text-4xl">{s.value}</div>
+              <div className="font-display text-3xl font-800 text-accent sm:text-4xl">
+                <CountUp value={s.value} />
+              </div>
               <div className="mt-1 text-xs font-medium uppercase tracking-wider text-ink-soft">{s.label}</div>
             </Reveal>
           ))}
@@ -193,26 +197,25 @@ export default function Home() {
 
       {/* Full-bleed pull-quote */}
       <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-charcoal text-white">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1800&auto=format&fit=crop"
-            alt=""
-            className="h-full w-full object-cover opacity-45"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
-        </div>
+        <ParallaxImage
+          src="https://images.unsplash.com/photo-1541976590-713941681591?q=80&w=1800&auto=format&fit=crop"
+          className="opacity-45"
+          range={14}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
         <div className="relative mx-auto max-w-4xl px-6 py-24 text-center sm:px-8">
           <Reveal>
             <p className="font-display text-3xl font-800 leading-tight tracking-tight sm:text-4xl md:text-5xl">
               We'd rather do one job right for a family that calls us back
               {" "}<span className="text-accent">than five jobs fast</span> for one that never does.
             </p>
-            <Link
+            <MagneticButton
+              as={Link}
               to="/gallery"
               className="mt-10 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 text-sm font-bold uppercase tracking-wider text-white transition-transform hover:scale-105"
             >
               Our Work
-            </Link>
+            </MagneticButton>
           </Reveal>
         </div>
       </section>
@@ -283,10 +286,10 @@ export default function Home() {
 
       {/* CTA */}
       <section className="relative overflow-hidden bg-blueprint py-24 text-white">
-        <img
+        <ParallaxImage
           src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?q=80&w=1800&auto=format&fit=crop"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-20"
+          className="opacity-20"
+          range={14}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-blueprint via-blueprint/90 to-blueprint/70" />
         <div className="bg-noise absolute inset-0" />
@@ -299,18 +302,20 @@ export default function Home() {
             not a runaround.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Link
+            <MagneticButton
+              as={Link}
               to="/contact"
               className="rounded-full bg-accent px-7 py-3.5 text-sm font-semibold text-white transition-transform hover:scale-105"
             >
               Request a Quote
-            </Link>
-            <a
+            </MagneticButton>
+            <MagneticButton
+              as="a"
               href={company.phoneHref}
               className="rounded-full border border-white/25 px-7 py-3.5 text-sm font-semibold transition-colors hover:bg-white/10"
             >
               Call {company.phoneDisplay}
-            </a>
+            </MagneticButton>
           </div>
         </div>
       </section>
