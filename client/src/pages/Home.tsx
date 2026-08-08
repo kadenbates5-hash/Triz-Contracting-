@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 import PageShell from "../components/PageShell";
 import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
-import StarRating from "../components/StarRating";
 import FlipCard from "../components/FlipCard";
-import TiltCard from "../components/TiltCard";
 import ParallaxImage from "../components/ParallaxImage";
 import MagneticButton from "../components/MagneticButton";
 import CountUp from "../components/CountUp";
+import Spotlight from "../components/Spotlight";
+import TestimonialCarousel from "../components/TestimonialCarousel";
 import { company, services, placeholderGallery } from "../data/content";
 
 const stats = [
@@ -22,6 +22,8 @@ const testimonialTeaser = [
   { name: "Sarah M.", rating: 5, text: "Andrew and his crew redid our kitchen and it looks incredible. On time, on budget, no surprises." },
   { name: "Mike R.", rating: 5, text: "Full roof replacement after storm damage. Fast, professional, and cleaned up every day." },
   { name: "Jen K.", rating: 5, text: "We've used Triz for three different projects now. Always our first call." },
+  { name: "Tom B.", rating: 5, text: "Poured a new driveway and patio for us. Clean lines, finished ahead of schedule." },
+  { name: "Dana P.", rating: 4, text: "Great communication throughout our addition project. Would hire again." },
 ];
 
 export default function Home() {
@@ -35,6 +37,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
         <div className="bg-noise absolute inset-0" />
+        <Spotlight size={600} />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
@@ -203,6 +206,7 @@ export default function Home() {
           range={14}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-charcoal/70 via-charcoal/40 to-charcoal/80" />
+        <Spotlight size={550} />
         <div className="relative mx-auto max-w-4xl px-6 py-24 text-center sm:px-8">
           <Reveal>
             <p className="font-display text-3xl font-800 leading-tight tracking-tight sm:text-4xl md:text-5xl">
@@ -262,17 +266,9 @@ export default function Home() {
           </h2>
         </Reveal>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {testimonialTeaser.map((t, i) => (
-            <Reveal key={t.name} delay={i * 0.1}>
-              <TiltCard className="h-full rounded-2xl border border-paper-line bg-paper-soft p-6">
-                <StarRating rating={t.rating} />
-                <p className="mt-4 text-sm leading-relaxed text-ink-soft">"{t.text}"</p>
-                <p className="mt-4 text-sm font-semibold text-ink">{t.name}</p>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
+        <Reveal delay={0.1} className="mt-10">
+          <TestimonialCarousel items={testimonialTeaser} />
+        </Reveal>
 
         <Reveal className="mt-10 text-center">
           <Link
@@ -293,6 +289,7 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-blueprint via-blueprint/90 to-blueprint/70" />
         <div className="bg-noise absolute inset-0" />
+        <Spotlight size={550} />
         <div className="relative mx-auto max-w-3xl px-5 text-center sm:px-8">
           <h2 className="font-display text-3xl font-800 tracking-tight sm:text-4xl">
             Ready to start your project?

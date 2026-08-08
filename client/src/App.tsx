@@ -5,6 +5,7 @@ import AnnouncementBar from "./components/AnnouncementBar";
 import Footer from "./components/Footer";
 import StickyCallButton from "./components/StickyCallButton";
 import ScrollProgressBar from "./components/ScrollProgressBar";
+import BackToTop from "./components/BackToTop";
 import Home from "./pages/Home";
 import Services from "./pages/Services";
 import Gallery from "./pages/Gallery";
@@ -34,6 +35,7 @@ export default function App() {
       </AnimatePresence>
       <Footer />
       <StickyCallButton />
+      <BackToTop />
     </div>
   );
 }

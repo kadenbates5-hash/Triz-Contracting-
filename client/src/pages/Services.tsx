@@ -5,9 +5,11 @@ import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
+import { usePageTitle } from "../lib/usePageTitle";
 import { services } from "../data/content";
 
 export default function Services() {
+  usePageTitle("Services");
   const [openSlug, setOpenSlug] = useState<string | null>(services[0].slug);
 
   return (

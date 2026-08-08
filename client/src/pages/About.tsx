@@ -5,6 +5,7 @@ import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import FlipCard from "../components/FlipCard";
 import MagneticButton from "../components/MagneticButton";
+import { usePageTitle } from "../lib/usePageTitle";
 import { company, services } from "../data/content";
 
 const values = [
@@ -15,6 +16,7 @@ const values = [
 ];
 
 export default function About() {
+  usePageTitle("About");
   return (
     <PageShell>
       <PageHero

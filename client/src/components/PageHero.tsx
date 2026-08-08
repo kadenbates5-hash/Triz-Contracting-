@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import ParallaxImage from "./ParallaxImage";
+import Spotlight from "./Spotlight";
 
 export default function PageHero({
   eyebrow,
@@ -19,6 +20,7 @@ export default function PageHero({
     <section className="relative overflow-hidden bg-charcoal py-24 text-white sm:py-32">
       <ParallaxImage src={image} range={12} />
       <div className="absolute inset-0 bg-gradient-to-b from-charcoal/85 via-charcoal/75 to-charcoal" />
+      <Spotlight />
       <div className="relative mx-auto max-w-4xl px-5 text-center sm:px-8">
         <motion.span
           initial={{ opacity: 0, y: 10 }}

@@ -6,6 +6,7 @@ import Reveal from "../components/Reveal";
 import StarRating from "../components/StarRating";
 import TiltCard from "../components/TiltCard";
 import { api, type Review } from "../lib/api";
+import { usePageTitle } from "../lib/usePageTitle";
 
 const fallbackReviews: Review[] = [
   { id: -1, name: "Sarah M.", rating: 5, text: "Andrew and his crew redid our kitchen and it looks incredible. On time, on budget, no surprises.", created_at: "", status: "approved" },
@@ -15,6 +16,7 @@ const fallbackReviews: Review[] = [
 ];
 
 export default function Reviews() {
+  usePageTitle("Reviews");
   const [reviews, setReviews] = useState<Review[]>(fallbackReviews);
   const [showForm, setShowForm] = useState(false);
   const [submitted, setSubmitted] = useState(false);

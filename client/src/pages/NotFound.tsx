@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import PageShell from "../components/PageShell";
+import { usePageTitle } from "../lib/usePageTitle";
 
 export default function NotFound() {
+  usePageTitle("Page Not Found");
   return (
     <PageShell>
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 text-center">

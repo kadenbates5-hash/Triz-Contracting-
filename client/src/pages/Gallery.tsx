@@ -6,10 +6,12 @@ import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import { galleryCategories, placeholderGallery, type GalleryItem as LocalItem } from "../data/content";
 import { api } from "../lib/api";
+import { usePageTitle } from "../lib/usePageTitle";
 
 type Item = LocalItem;
 
 export default function Gallery() {
+  usePageTitle("Gallery");
   const [items, setItems] = useState<Item[]>(placeholderGallery);
   const [category, setCategory] = useState<(typeof galleryCategories)[number]>("All");
   const [lightbox, setLightbox] = useState<Item | null>(null);

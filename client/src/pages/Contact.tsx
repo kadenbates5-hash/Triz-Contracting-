@@ -8,10 +8,12 @@ import TiltCard from "../components/TiltCard";
 import ServiceAreaMap from "../components/ServiceAreaMap";
 import { company, services } from "../data/content";
 import { api } from "../lib/api";
+import { usePageTitle } from "../lib/usePageTitle";
 
 const steps = ["Project", "Details", "Contact Info"];
 
 export default function Contact() {
+  usePageTitle("Contact");
   const [params] = useSearchParams();
   const [step, setStep] = useState(0);
   const [submitting, setSubmitting] = useState(false);
