@@ -15,7 +15,7 @@ export default function Gallery() {
   usePageTitle("Gallery");
   const [items, setItems] = useState<Item[]>(placeholderGallery);
   const [category, setCategory] = useState<(typeof galleryCategories)[number]>("All");
-  const [lightbox, setLightbox] = useState<Item | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     api
@@ -42,6 +42,27 @@ export default function Gallery() {
     () => (category === "All" ? items : items.filter((i) => i.category === category)),
     [items, category]
   );
+
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [category]);
+
+  const lightboxItem = lightboxIndex !== null ? filtered[lightboxIndex] : null;
+
+  const showPrev = () => setLightboxIndex((i) => (i === null ? null : (i - 1 + filtered.length) % filtered.length));
+  const showNext = () => setLightboxIndex((i) => (i === null ? null : (i + 1) % filtered.length));
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setLightboxIndex(null);
+      if (e.key === "ArrowLeft") showPrev();
+      if (e.key === "ArrowRight") showNext();
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lightboxIndex, filtered.length]);
 
   return (
     <PageShell>
@@ -83,7 +104,7 @@ export default function Gallery() {
                 transition={{ duration: 0.3, delay: (i % 6) * 0.04 }}
               >
                 <button
-                  onClick={() => setLightbox(item)}
+                  onClick={() => setLightboxIndex(i)}
                   className="block w-full text-left"
                   aria-label={`Open ${item.title}`}
                 >
@@ -106,26 +127,51 @@ export default function Gallery() {
       </section>
 
       <AnimatePresence>
-        {lightbox && (
+        {lightboxItem && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[60] flex items-center justify-center bg-charcoal/90 p-5 backdrop-blur"
-            onClick={() => setLightbox(null)}
+            onClick={() => setLightboxIndex(null)}
           >
+            {filtered.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showPrev();
+                }}
+                aria-label="Previous project"
+                className="absolute left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 sm:flex"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 6l-6 6 6 6" />
+                </svg>
+              </button>
+            )}
+
             <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
+              key={lightboxItem.id}
+              initial={{ scale: 0.92, opacity: 0, rotateY: 8 }}
+              animate={{ scale: 1, opacity: 1, rotateY: 0 }}
               exit={{ scale: 0.92, opacity: 0 }}
+              transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               onClick={(e) => e.stopPropagation()}
               className="w-full max-w-3xl"
+              style={{ perspective: "1200px" }}
             >
-              <BeforeAfterSlider before={lightbox.before} after={lightbox.after} title={lightbox.title} />
+              <BeforeAfterSlider before={lightboxItem.before} after={lightboxItem.after} title={lightboxItem.title} />
               <div className="mt-4 flex items-center justify-between text-white">
-                <p className="font-display text-lg font-700">{lightbox.title}</p>
+                <div>
+                  <p className="font-display text-lg font-700">{lightboxItem.title}</p>
+                  {filtered.length > 1 && (
+                    <p className="text-xs text-white/50">
+                      {(lightboxIndex ?? 0) + 1} / {filtered.length}
+                    </p>
+                  )}
+                </div>
                 <button
-                  onClick={() => setLightbox(null)}
+                  onClick={() => setLightboxIndex(null)}
                   className="flex h-9 w-9 items-center justify-center rounded-full border border-white/25"
                   aria-label="Close"
                 >
@@ -135,6 +181,21 @@ export default function Gallery() {
                 </button>
               </div>
             </motion.div>
+
+            {filtered.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  showNext();
+                }}
+                aria-label="Next project"
+                className="absolute right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/25 text-white transition-colors hover:bg-white/10 sm:flex"
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 6l6 6-6 6" />
+                </svg>
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>

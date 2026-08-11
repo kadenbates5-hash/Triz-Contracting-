@@ -11,6 +11,7 @@ import MagneticButton from "../components/MagneticButton";
 import CountUp from "../components/CountUp";
 import Spotlight from "../components/Spotlight";
 import TestimonialCarousel from "../components/TestimonialCarousel";
+import FaqAccordion from "../components/FaqAccordion";
 import { company, services, placeholderGallery } from "../data/content";
 import { api, type Review } from "../lib/api";
 
@@ -20,6 +21,29 @@ const fallbackTestimonials = [
   { name: "Jen K.", rating: 5, text: "We've used Triz for three different projects now. Always our first call." },
   { name: "Tom B.", rating: 5, text: "Poured a new driveway and patio for us. Clean lines, finished ahead of schedule." },
   { name: "Dana P.", rating: 4, text: "Great communication throughout our addition project. Would hire again." },
+];
+
+const faqs = [
+  {
+    q: "Are you licensed and insured?",
+    a: "Yes — Triz Contracting is fully licensed and insured for every trade we take on. Certificates are available on request.",
+  },
+  {
+    q: "How do I get an estimate?",
+    a: "Call, text, or fill out the contact form with a bit about your project. We'll set up a time to walk the job and follow up with a written quote — free, no obligation.",
+  },
+  {
+    q: "What areas do you serve?",
+    a: `We're based in ${company.city}, WI and serve ${company.serviceArea}. Not sure if you're in range? Reach out and ask.`,
+  },
+  {
+    q: "How long does a typical project take?",
+    a: "It depends on scope — a bathroom refresh might take a week, while a full addition can run several months. You'll get a realistic timeline with your quote, before any work starts.",
+  },
+  {
+    q: "Do you offer a warranty on your work?",
+    a: "Yes, every project is backed by a workmanship warranty. We stand behind what we build.",
+  },
 ];
 
 export default function Home() {
@@ -217,6 +241,48 @@ export default function Home() {
         </Reveal>
       </section>
 
+      {/* How it works */}
+      <section className="bg-paper-soft py-24">
+        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="text-xs font-bold uppercase tracking-widest text-accent">How it works</span>
+            <h2 className="mt-3 font-display text-3xl font-800 tracking-tight text-ink sm:text-4xl">
+              From first call to final walkthrough.
+            </h2>
+          </Reveal>
+
+          <div className="relative mt-16">
+            <div className="absolute left-0 right-0 top-6 hidden h-0.5 bg-paper-line sm:block" />
+            <motion.div
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              style={{ transformOrigin: "left" }}
+              className="absolute left-0 right-0 top-6 hidden h-0.5 bg-accent sm:block"
+            />
+            <div className="grid gap-10 sm:grid-cols-4 sm:gap-6">
+              {[
+                { title: "Reach Out", text: "Call, text, or fill out the form — tell us what you need done.", icon: "phone" },
+                { title: "Free Estimate", text: "We walk the job, talk through options, and give you a straight written quote.", icon: "clipboard" },
+                { title: "We Build", text: "A dedicated crew, a clear timeline, and updates along the way — no surprises.", icon: "hammer" },
+                { title: "Final Walkthrough", text: "We sign off together, and stand behind the work with a workmanship warranty.", icon: "check" },
+              ].map((step, i) => (
+                <Reveal key={step.title} delay={i * 0.12}>
+                  <TiltCard max={6} className="h-full">
+                    <div className="relative flex h-12 w-12 items-center justify-center rounded-full border-2 border-accent bg-paper-soft font-display text-lg font-800 text-accent sm:mx-0">
+                      {i + 1}
+                    </div>
+                    <h3 className="mt-4 font-display text-lg font-700 text-ink">{step.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-ink-soft">{step.text}</p>
+                  </TiltCard>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Full-bleed pull-quote */}
       <section className="relative flex min-h-[70vh] items-center overflow-hidden bg-charcoal text-white">
         <ParallaxImage
@@ -344,6 +410,19 @@ export default function Home() {
           >
             Read All Reviews
           </Link>
+        </Reveal>
+      </section>
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+        <Reveal className="mx-auto max-w-2xl text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-accent">FAQ</span>
+          <h2 className="mt-3 font-display text-3xl font-800 tracking-tight text-ink sm:text-4xl">
+            Questions? Answered.
+          </h2>
+        </Reveal>
+        <Reveal delay={0.1} className="mt-14">
+          <FaqAccordion items={faqs} />
         </Reveal>
       </section>
 
