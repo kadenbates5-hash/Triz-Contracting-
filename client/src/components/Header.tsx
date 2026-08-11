@@ -101,27 +101,36 @@ export default function Header() {
             className="overflow-hidden border-t border-white/10 bg-charcoal lg:hidden"
           >
             <div className="flex flex-col gap-1 px-5 py-4">
-              {links.map((l) => (
-                <NavLink
+              {links.map((l, i) => (
+                <motion.div
                   key={l.to}
-                  to={l.to}
-                  end={l.to === "/"}
-                  onClick={() => setMenuOpen(false)}
-                  className={({ isActive }) =>
-                    `rounded-lg px-4 py-3 text-base font-medium ${
-                      isActive ? "bg-white/10 text-white" : "text-white/70"
-                    }`
-                  }
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.25 }}
                 >
-                  {l.label}
-                </NavLink>
+                  <NavLink
+                    to={l.to}
+                    end={l.to === "/"}
+                    onClick={() => setMenuOpen(false)}
+                    className={({ isActive }) =>
+                      `block rounded-lg px-4 py-3 text-base font-medium ${
+                        isActive ? "bg-white/10 text-white" : "text-white/70"
+                      }`
+                    }
+                  >
+                    {l.label}
+                  </NavLink>
+                </motion.div>
               ))}
-              <a
+              <motion.a
+                initial={{ opacity: 0, x: -12 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: links.length * 0.05, duration: 0.25 }}
                 href={company.phoneHref}
                 className="mt-2 flex items-center justify-center gap-2 rounded-full bg-accent px-4 py-3 text-base font-semibold text-white"
               >
                 <PhoneIcon /> Call {company.phoneDisplay}
-              </a>
+              </motion.a>
             </div>
           </motion.nav>
         )}

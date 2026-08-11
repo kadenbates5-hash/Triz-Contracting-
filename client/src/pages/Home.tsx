@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import PageShell from "../components/PageShell";
@@ -10,15 +11,9 @@ import CountUp from "../components/CountUp";
 import Spotlight from "../components/Spotlight";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import { company, services, placeholderGallery } from "../data/content";
+import { api, type Review } from "../lib/api";
 
-const stats = [
-  { value: "250+", label: "Projects completed" },
-  { value: "100%", label: "Licensed & insured" },
-  { value: "5.0", label: "Avg. client rating" },
-  { value: "Free", label: "Estimates" },
-];
-
-const testimonialTeaser = [
+const fallbackTestimonials = [
   { name: "Sarah M.", rating: 5, text: "Andrew and his crew redid our kitchen and it looks incredible. On time, on budget, no surprises." },
   { name: "Mike R.", rating: 5, text: "Full roof replacement after storm damage. Fast, professional, and cleaned up every day." },
   { name: "Jen K.", rating: 5, text: "We've used Triz for three different projects now. Always our first call." },
@@ -27,6 +22,29 @@ const testimonialTeaser = [
 ];
 
 export default function Home() {
+  const [reviews, setReviews] = useState<Review[] | null>(null);
+
+  useEffect(() => {
+    api
+      .getReviews()
+      .then((data) => {
+        if (data.length) setReviews(data);
+      })
+      .catch(() => {});
+  }, []);
+
+  const testimonialTeaser = reviews ?? fallbackTestimonials;
+  const avgRating = reviews?.length
+    ? (reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)
+    : "5.0";
+
+  const stats = [
+    { value: "250+", label: "Projects completed" },
+    { value: "100%", label: "Licensed & insured" },
+    { value: avgRating, label: "Avg. client rating" },
+    { value: "Free", label: "Estimates" },
+  ];
+
   return (
     <PageShell>
       {/* Hero */}

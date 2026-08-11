@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 export default function PageShell({ children }: { children: ReactNode }) {
   return (
     <motion.main
+      id="main-content"
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -16 }}
