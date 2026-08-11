@@ -4,6 +4,7 @@ import PageShell from "../components/PageShell";
 import PageHero from "../components/PageHero";
 import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
+import MagneticButton from "../components/MagneticButton";
 import { galleryCategories, placeholderGallery, type GalleryItem as LocalItem } from "../data/content";
 import { api } from "../lib/api";
 import { usePageTitle } from "../lib/usePageTitle";
@@ -54,8 +55,10 @@ export default function Gallery() {
       <section className="mx-auto max-w-7xl px-5 py-16 sm:px-8">
         <Reveal className="mb-10 flex flex-wrap justify-center gap-2">
           {galleryCategories.map((c) => (
-            <button
+            <MagneticButton
               key={c}
+              as="button"
+              strength={0.5}
               onClick={() => setCategory(c)}
               className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
                 category === c
@@ -64,7 +67,7 @@ export default function Gallery() {
               }`}
             >
               {c}
-            </button>
+            </MagneticButton>
           ))}
         </Reveal>
 

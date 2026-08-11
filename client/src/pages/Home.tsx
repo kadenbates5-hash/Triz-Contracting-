@@ -5,6 +5,7 @@ import PageShell from "../components/PageShell";
 import Reveal from "../components/Reveal";
 import BeforeAfterSlider from "../components/BeforeAfterSlider";
 import FlipCard from "../components/FlipCard";
+import TiltCard from "../components/TiltCard";
 import ParallaxImage from "../components/ParallaxImage";
 import MagneticButton from "../components/MagneticButton";
 import CountUp from "../components/CountUp";
@@ -271,6 +272,54 @@ export default function Home() {
             >
               View Full Gallery
             </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Featured deck / outdoor living showcase */}
+      <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+          <Reveal>
+            <TiltCard max={8} className="overflow-hidden rounded-3xl shadow-xl">
+              <img
+                src="https://images.unsplash.com/photo-1591825729269-caeb344f6df2?q=80&w=1200&auto=format&fit=crop"
+                alt="Custom backyard deck and pergola build"
+                className="aspect-[4/3] w-full object-cover"
+                loading="lazy"
+              />
+            </TiltCard>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <span className="text-xs font-bold uppercase tracking-widest text-accent">Featured Work</span>
+            <h2 className="mt-3 font-display text-3xl font-800 tracking-tight text-ink sm:text-4xl">
+              Outdoor living, built to last.
+            </h2>
+            <p className="mt-4 text-ink-soft">
+              Decks, pergolas, and covered porches designed around how you actually use your
+              backyard — not just how it photographs. Every build is engineered for Wisconsin
+              winters and finished to look just as good in year ten as it did on day one.
+            </p>
+            <div className="mt-6 grid grid-cols-3 gap-4">
+              {[
+                { value: "2–3", label: "Week builds" },
+                { value: "10+", label: "Yr warranty" },
+                { value: "100%", label: "Custom design" },
+              ].map((s) => (
+                <div key={s.label} className="rounded-xl bg-paper-soft p-4 text-center">
+                  <div className="font-display text-xl font-800 text-accent">{s.value}</div>
+                  <div className="mt-1 text-[11px] font-medium uppercase tracking-wide text-ink-faint">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+            <MagneticButton
+              as={Link}
+              to="/services"
+              className="mt-7 inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition-transform hover:scale-105"
+            >
+              Explore Outdoor Living
+            </MagneticButton>
           </Reveal>
         </div>
       </section>

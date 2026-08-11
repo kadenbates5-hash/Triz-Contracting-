@@ -33,12 +33,14 @@ export default function Services() {
                     className="flex w-full items-center justify-between gap-4 py-6 text-left"
                   >
                     <div className="flex items-center gap-4">
-                      <img
-                        src={s.image}
-                        alt=""
-                        className="h-12 w-12 shrink-0 rounded-lg object-cover sm:h-14 sm:w-14"
-                        loading="lazy"
-                      />
+                      <TiltCard max={16} className="shrink-0 rounded-lg">
+                        <img
+                          src={s.image}
+                          alt=""
+                          className="h-12 w-12 rounded-lg object-cover sm:h-14 sm:w-14"
+                          loading="lazy"
+                        />
+                      </TiltCard>
                       <span className="font-display text-sm font-700 text-accent">
                         {String(i + 1).padStart(2, "0")}
                       </span>
