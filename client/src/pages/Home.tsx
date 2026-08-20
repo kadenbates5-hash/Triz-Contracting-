@@ -10,6 +10,7 @@ import ParallaxImage from "../components/ParallaxImage";
 import MagneticButton from "../components/MagneticButton";
 import CountUp from "../components/CountUp";
 import Spotlight from "../components/Spotlight";
+import AmbientParticles from "../components/AmbientParticles";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import FaqAccordion from "../components/FaqAccordion";
 import { company, services, placeholderGallery } from "../data/content";
@@ -81,6 +82,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/50 to-charcoal/30" />
         <div className="bg-noise absolute inset-0" />
         <Spotlight size={600} />
+        <AmbientParticles />
 
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}

@@ -65,6 +65,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.custom-cursor-active,
+.custom-cursor-active a,
+.custom-cursor-active button {
+  cursor: none !important;
+}
+
 ::selection {
   background: var(--color-accent);
   color: white;
