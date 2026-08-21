@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logoMark from "../assets/logo-mark.png";
+import LogoIcon from "./LogoIcon";
 
 export default function Preloader() {
   const [show, setShow] = useState(true);
@@ -26,14 +26,13 @@ export default function Preloader() {
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[999] flex items-center justify-center bg-charcoal"
         >
-          <motion.img
-            src={logoMark}
-            alt=""
+          <motion.div
             initial={{ scale: 0.5, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="h-20 w-20"
-          />
+          >
+            <LogoIcon className="h-20 w-20 text-white" />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>

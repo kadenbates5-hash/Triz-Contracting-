@@ -5,6 +5,7 @@ import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import FlipCard from "../components/FlipCard";
 import MagneticButton from "../components/MagneticButton";
+import LogoSeal from "../components/LogoSeal";
 import { usePageTitle } from "../lib/usePageTitle";
 import { company, services } from "../data/content";
 
@@ -27,12 +28,15 @@ export default function About() {
 
       <section className="mx-auto max-w-6xl px-5 py-20 sm:px-8">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <Reveal>
+          <Reveal className="relative">
             <img
               src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop"
               alt="Contractor at a job site"
               className="aspect-[4/5] w-full rounded-2xl object-cover"
             />
+            <div className="absolute -bottom-6 -right-6 hidden rounded-full bg-paper p-2 shadow-xl sm:block">
+              <LogoSeal size={110} className="text-ink" />
+            </div>
           </Reveal>
           <Reveal delay={0.1}>
             <span className="text-xs font-bold uppercase tracking-widest text-accent">Our Story</span>
