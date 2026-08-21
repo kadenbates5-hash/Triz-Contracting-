@@ -32,7 +32,7 @@ manage reviews/gallery via the admin API:
 - `GET /api/reviews/admin/pending` — pending reviews awaiting approval (Bearer token)
 - `PATCH /api/reviews/admin/:id/approve` — approve a review
 - `POST /api/gallery/admin` — add a gallery item (multipart form: `title`, `category`, `before`, `after` image files)
-- `GET /api/contact/admin` — view submitted leads
+- `GET /api/contact/admin` — view submitted leads (includes `photo_path` when a visitor attached a project photo)
 
 No outbound email/SMS service is wired up yet — contact form submissions are
 stored in the database and visible via the admin endpoint above. Wire up a

@@ -11,6 +11,7 @@ import MagneticButton from "../components/MagneticButton";
 import CountUp from "../components/CountUp";
 import Spotlight from "../components/Spotlight";
 import AmbientParticles from "../components/AmbientParticles";
+import Marquee from "../components/Marquee";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import FaqAccordion from "../components/FaqAccordion";
 import { company, services, placeholderGallery } from "../data/content";
@@ -159,6 +160,18 @@ export default function Home() {
           />
         </motion.div>
       </section>
+
+      <Marquee
+        items={[
+          "Kitchen & Bath Remodeling",
+          "Roofing",
+          "Additions & Framing",
+          "Concrete & Foundations",
+          "Decks & Outdoor Living",
+          "Licensed & Insured",
+          "Free Estimates",
+        ]}
+      />
 
       {/* Stats bar */}
       <section className="border-b border-paper-line bg-paper-soft">

@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import { useSearchParams } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import PageShell from "../components/PageShell";
@@ -25,6 +25,32 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [photo, setPhoto] = useState<File | null>(null);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
+  const [photoError, setPhotoError] = useState("");
+
+  function handlePhotoChange(e: ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp|gif)$/.test(file.type)) {
+      setPhotoError("Please choose a JPG, PNG, WEBP, or GIF image.");
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      setPhotoError("Photo must be under 8MB.");
+      return;
+    }
+    setPhotoError("");
+    setPhoto(file);
+    setPhotoPreview(URL.createObjectURL(file));
+  }
+
+  function removePhoto() {
+    if (photoPreview) URL.revokeObjectURL(photoPreview);
+    setPhoto(null);
+    setPhotoPreview(null);
+    setPhotoError("");
+  }
 
   const canNext =
     (step === 0 && projectType.trim().length > 0) ||
@@ -46,6 +72,7 @@ export default function Contact() {
         phone: phone.trim(),
         projectType,
         message: message.trim(),
+        photo,
       });
       setSubmitted(true);
     } catch {
@@ -211,6 +238,35 @@ export default function Contact() {
                             placeholder="e.g. Looking to redo our kitchen, roughly 200 sq ft, hoping to start this fall..."
                             className="mt-4 w-full rounded-lg border border-paper-line px-4 py-3 text-sm outline-none focus:border-accent"
                           />
+
+                          <label className="mb-1.5 mt-4 block text-sm font-medium text-ink">
+                            Photo <span className="font-normal text-ink-faint">(optional)</span>
+                          </label>
+                          {photoPreview ? (
+                            <div className="flex items-center gap-3">
+                              <img
+                                src={photoPreview}
+                                alt="Selected upload preview"
+                                className="h-16 w-16 rounded-lg object-cover"
+                              />
+                              <button
+                                type="button"
+                                onClick={removePhoto}
+                                className="text-xs font-semibold text-ink-soft underline hover:text-accent"
+                              >
+                                Remove photo
+                              </button>
+                            </div>
+                          ) : (
+                            <label className="flex cursor-pointer items-center gap-2 rounded-lg border border-dashed border-paper-line px-4 py-3 text-sm text-ink-soft transition-colors hover:border-accent hover:text-accent">
+                              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4.5-4.5a2 2 0 0 1 2.8 0L16 16M14 14l1.5-1.5a2 2 0 0 1 2.8 0L20 14M4 6h16v14H4V6Z" />
+                              </svg>
+                              Attach a photo of the project or area
+                              <input type="file" accept="image/*" onChange={handlePhotoChange} className="hidden" />
+                            </label>
+                          )}
+                          {photoError && <p className="mt-1.5 text-xs text-red-600">{photoError}</p>}
                         </motion.div>
                       )}
 

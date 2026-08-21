@@ -32,9 +32,16 @@ db.exec(`
     phone TEXT,
     project_type TEXT,
     message TEXT,
+    photo_path TEXT,
     created_at TEXT NOT NULL DEFAULT (datetime('now'))
   );
 `);
+
+// Add photo_path to pre-existing databases created before this column existed.
+const contactColumns = db.prepare("PRAGMA table_info(contact_submissions)").all() as { name: string }[];
+if (!contactColumns.some((c) => c.name === "photo_path")) {
+  db.exec("ALTER TABLE contact_submissions ADD COLUMN photo_path TEXT");
+}
 
 // Seed with placeholder content on first run so the site isn't empty out of the box.
 const reviewCount = (db.prepare("SELECT COUNT(*) as n FROM reviews").get() as { n: number }).n;
