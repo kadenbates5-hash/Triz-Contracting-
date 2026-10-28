@@ -12,6 +12,8 @@ import CountUp from "../components/CountUp";
 import Spotlight from "../components/Spotlight";
 import AmbientParticles from "../components/AmbientParticles";
 import Marquee from "../components/Marquee";
+import HorizontalShowcase from "../components/HorizontalShowcase";
+import WordReveal from "../components/WordReveal";
 import TestimonialCarousel from "../components/TestimonialCarousel";
 import FaqAccordion from "../components/FaqAccordion";
 import { company, services, placeholderGallery } from "../data/content";
@@ -309,10 +311,14 @@ export default function Home() {
         <Spotlight size={550} />
         <div className="relative mx-auto max-w-4xl px-6 py-24 text-center sm:px-8">
           <Reveal>
-            <p className="font-display text-3xl font-800 leading-tight tracking-tight sm:text-4xl md:text-5xl">
-              We'd rather do one job right for a family that calls us back
-              {" "}<span className="text-accent">than five jobs fast</span> for one that never does.
-            </p>
+            <WordReveal
+              className="font-display text-3xl font-800 leading-tight tracking-tight sm:text-4xl md:text-5xl"
+              segments={[
+                { text: "We'd rather do one job right for a family that calls us back" },
+                { text: "than five jobs fast", accent: true },
+                { text: "for one that never does." },
+              ]}
+            />
             <MagneticButton
               as={Link}
               to="/gallery"
@@ -356,6 +362,18 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      <HorizontalShowcase
+        eyebrow="Scroll through our recent work"
+        heading="Projects we're proud of."
+        items={placeholderGallery.map((g) => ({
+          id: g.id,
+          title: g.title,
+          subtitle: g.category,
+          image: g.after,
+          to: "/gallery",
+        }))}
+      />
 
       {/* Featured deck / outdoor living showcase */}
       <section className="mx-auto max-w-7xl px-5 py-24 sm:px-8">
